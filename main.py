@@ -1,3 +1,3 @@
 import millerRabin
 
-print(millerRabin.miller_rabin(19))
+print(millerRabin.miller_rabin(9941))

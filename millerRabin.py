@@ -13,6 +13,7 @@ def miller_rabin(number: int):
     d = number
     print(f'd is {d}, s is {s}')
     for i in range(5):
+        flag = False
         a = random.randint(1, source_number-1)
         print(f'a is {a}')
         x = a ** d % source_number
@@ -23,6 +24,8 @@ def miller_rabin(number: int):
             if x == 1:
                 return False
             if x == source_number - 1:
+                flag = True
                 break
-        return False
+        if not flag:
+            return False
     return True
