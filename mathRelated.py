@@ -1,3 +1,4 @@
+import math
 import random
 
 
@@ -37,3 +38,16 @@ def generate_random_prime(left_border: int, right_border: int) -> int:
         if miller_rabin(number):
             # print(number)
             return number
+
+
+def euler_function(p: int, q: int) -> int:
+    return (p - 1) * (q - 1)
+
+
+def generate_open_exponent(f: int) -> int:
+    while True:
+        open_exponent = generate_random_prime(2, f - 1)
+        if math.gcd(f, open_exponent) == 1:
+            return open_exponent
+
+

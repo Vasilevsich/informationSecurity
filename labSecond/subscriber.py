@@ -1,4 +1,4 @@
-import millerRabin
+import mathRelated
 
 
 class Subscriber:
@@ -6,7 +6,7 @@ class Subscriber:
         self.g = g
         self.p = p
         self.name = name
-        self.secret_number = millerRabin.generate_random_prime(1000000, 2000000)
+        self.secret_number = mathRelated.generate_random_prime(1000000, 2000000)
         print(f'{self.name} generated secret number {self.secret_number}')
         self.package = self.g**self.secret_number % self.p
         print(f'{self.name} created package {self.package}')
