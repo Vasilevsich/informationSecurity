@@ -18,7 +18,7 @@ def format_input(input_string: str):
     input_string = string_to_binary(input_string)
     input_length = len(input_string)
     input_string += '1'
-    while len(input_string) < LIMIT:
+    while len(input_string) % 512 != 448:
         input_string += '0'
     return add_len(input_string, input_length)
 
