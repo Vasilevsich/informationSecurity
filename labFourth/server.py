@@ -14,6 +14,7 @@ class Server:
         self.users[info[0]] = info[1:]
 
     def generate_b(self, message):
+        print('Server received A from client')
         if message[1] == 0:
             raise Exception('A is 0!')
         self.A = message[1]

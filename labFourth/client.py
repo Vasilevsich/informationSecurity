@@ -2,6 +2,7 @@ import random
 import string
 import sha
 
+
 class Client:
     def __init__(self, n: int, g: int, username: str, password: str):
         self.username = username
@@ -26,6 +27,7 @@ class Client:
         return [self.username, A]
 
     def generate_client_session_key(self, message):
+        print('Client received B from server')
         if message[0] == 0:
             raise Exception(' B is 0!')
         self.B = message[0]

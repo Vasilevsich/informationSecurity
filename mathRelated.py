@@ -53,7 +53,7 @@ def generate_open_exponent(f: int) -> int:
 
 # For safe primes
 def calculate_primitive_root(modulo: int):
-    print('Calculating primitive root')
+    #print('Calculating primitive root')
     prime_multipliers_set = set(factorize_number(modulo-1))
 
     for g in range(1, modulo):
@@ -90,7 +90,6 @@ def factorize_number(number: int):
         multipliers.append(multiplier)
         buf = int(buf / multiplier)
     multipliers.append(buf)
-    print(multipliers)
     flag = True
     while flag:
         for multiplier in multipliers:
