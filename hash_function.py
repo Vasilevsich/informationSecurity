@@ -15,5 +15,5 @@ def hash_function(string: str):
     #tmp = pow(int(source_bin_string, 2), int(tmp, 2), 128)
     #print(hex(int(tmp, 2)))
     tmp = pow(int(tmp, 2), 10, int(source_bin_string, 2))
-    print(hex(tmp))
+    #print(hex(tmp))
     return tmp
