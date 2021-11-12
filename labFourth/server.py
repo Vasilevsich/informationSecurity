@@ -1,5 +1,6 @@
 import random
 import sha
+import hash_function
 
 
 class Server:
@@ -26,14 +27,15 @@ class Server:
         return [B, s_v[0]]
 
     def generate_server_session_key(self, username):
-        u = int(sha.sha_256(hex(self.A)[2:] + hex(self.B)[2:]), 16)
-        #s_s = (self.A * self.users[username][1] ** u % self.N) ** self.b % self.N
+        #u = int(sha.sha_256(hex(self.A)[2:] + hex(self.B)[2:]), 16)
+        u = hash_function.hash_function(hex(self.A)) + self.B
         s_s = pow(self.A * pow(self.users[username][1], u, self.N), self.b, self.N)
         self.s_s = s_s
         return s_s
 
     def compare_m_1(self, m_1_key):
-        if sha.sha_256(str(self.A) + str(self.B) + str(self.s_s)) == m_1_key:
+        #if sha.sha_256(str(self.A) + str(self.B) + str(self.s_s)) == m_1_key:
+        if hash_function.hash_function(str(self.A) + str(self.B) + str(self.s_s)) == m_1_key:
             print('Connection successful! M1 is right')
         else:
             print('Bad M1! Connection over!')

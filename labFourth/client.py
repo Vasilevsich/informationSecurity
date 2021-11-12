@@ -1,6 +1,7 @@
 import random
 import string
 import sha
+import hash_function
 
 
 class Client:
@@ -13,7 +14,8 @@ class Client:
 
         self.s = ''.join(random.choice(string.ascii_lowercase) for i in range(random.randint(10, 15)))
         print(f'Salt is: ', self.s)
-        self.x = int(sha.sha_256(self.s + self.password), 16)
+        #self.x = int(sha.sha_256(self.s + self.password), 16)
+        self.x = hash_function.hash_function(self.s + self.password)
         self.v = pow(self.g, self.x, self.N)
 
     def send_reg_message(self):
@@ -31,7 +33,8 @@ class Client:
         if message[0] == 0:
             raise Exception(' B is 0!')
         self.B = message[0]
-        u = int(sha.sha_256(hex(self.A)[2:] + hex(self.B)[2:]), 16)
+        #u = int(sha.sha_256(hex(self.A)[2:] + hex(self.B)[2:]), 16)
+        u = hash_function.hash_function(hex(self.A)) + self.B
 
         tmp1 = pow(self.g, self.x, self.N)
         tmp1 *= self.k
@@ -43,4 +46,5 @@ class Client:
         return s_c
 
     def generate_m_1(self):
-        return sha.sha_256(str(self.A) + str(self.B) + str(self.s_c))
+        #return sha.sha_256(str(self.A) + str(self.B) + str(self.s_c))
+        return hash_function.hash_function(str(self.A) + str(self.B) + str(self.s_c))

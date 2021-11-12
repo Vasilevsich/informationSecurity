@@ -19,7 +19,8 @@ class Receiver:
         output = ''
         for character in encrypted_text:
             print(f'Current encrypted character: {character}')
-            output += chr(character ** self.private_key[0] % self.private_key[1])
+            # output += chr(character ** self.private_key[0] % self.private_key[1])
+            output += chr(pow(character, self.private_key[0], self.private_key[1]))
         return output
 
     def generate_secret_key(self, a: int, b: int):
