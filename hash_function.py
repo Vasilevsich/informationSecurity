@@ -12,8 +12,6 @@ def hash_function(string: str):
     while len(tmp) < len(binary_string):
         tmp = '0' + tmp
     tmp = tmp[-len(source_bin_string):] + tmp[:-len(source_bin_string)]
-    #tmp = pow(int(source_bin_string, 2), int(tmp, 2), 128)
-    #print(hex(int(tmp, 2)))
     tmp = pow(int(tmp, 2), 10, int(source_bin_string, 2))
-    #print(hex(tmp))
+    tmp *= int(source_bin_string, 2)
     return tmp
